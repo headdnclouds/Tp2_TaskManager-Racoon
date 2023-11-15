@@ -1,9 +1,11 @@
 package info;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 
+@EqualsAndHashCode
 public class Task {
+    private static int previousId = 0;
     @Getter
     private String description;
     @Getter
@@ -11,9 +13,9 @@ public class Task {
     @Getter
     private String status;
 
-    public Task(String description, int id) {
+    public Task(String description) {
         this.description = description;
-        this.id = id;
+        this.id = previousId++;
         this.status = "to do";
     }
 }
