@@ -21,13 +21,18 @@ public class TaskManager {
         tasks.add(task);
     }
 
-    // Set Task Done
+    // Remove the task matching the given id
+    public void removeTask(int id){
+         tasks = tasks.stream().filter(e-> e.getId()!=id).collect(Collectors.toList());
+    }
+
+    // Set the status of the task matching the id to "done".
     public void setDone(int id){
         tasks.stream().filter(e-> e.getId()==id).forEach(Task::done);
     }
 
-    // Remove the task matching the given id
-    public void removeTask(int id){
-         tasks = tasks.stream().filter(e-> e.getId()!=id).collect(Collectors.toList());
+    // Set the status of the task matching the id to "to do".
+    public void setTodo(int id){
+        tasks.stream().filter(e-> e.getId()==id).forEach(Task::todo);
     }
 }

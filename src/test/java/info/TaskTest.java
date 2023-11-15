@@ -44,4 +44,19 @@ public class TaskTest {
         //Verification
         assertEquals("done",task.getStatus());
     }
+
+    @Test
+    public void when_set_status_todo_task_set_todo(){
+
+        //Initialization
+        String description = "description";
+        Task task = new Task(description);
+        task.done();
+
+        //Treatment
+        task.todo();
+
+        //Verification
+        assertEquals("to do",task.getStatus());
+    }
 }

@@ -60,6 +60,22 @@ public class TaskManagerTest {
 
         //Verification
         assertEquals("done",task.getStatus());
-
     }
+
+    @Test
+    public void when_set_status_todo_task_set_todo(){
+
+        //Initialization
+        String description = "description";
+        Task task = new Task(description);
+        taskManager.addTask(task);
+        taskManager.setDone(task.getId());
+
+        //Treatment
+        taskManager.setTodo(task.getId());
+
+        //Verification
+        assertEquals("to do",task.getStatus());
+    }
+
 }

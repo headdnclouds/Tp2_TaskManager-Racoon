@@ -22,4 +22,8 @@ public class Task {
     public void done(){
         this.status = "done";
     }
+
+    public void todo(){
+        this.status = "to do";
+    }
 }
