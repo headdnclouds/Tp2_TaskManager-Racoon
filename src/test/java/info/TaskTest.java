@@ -30,4 +30,18 @@ public class TaskTest {
         //verify
         assertNotEquals(task1.getId(),task2.getId());
     }
+
+    @Test
+    public void when_set_status_done_task_set_done(){
+
+        //Initialization
+        String description = "description";
+        Task task = new Task(description);
+
+        //Treatment
+        task.done();
+
+        //Verification
+        assertEquals("done",task.getStatus());
+    }
 }

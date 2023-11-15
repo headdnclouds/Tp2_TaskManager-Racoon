@@ -18,4 +18,8 @@ public class Task {
         this.id = previousId++;
         this.status = "to do";
     }
+
+    public void done(){
+        this.status = "done";
+    }
 }

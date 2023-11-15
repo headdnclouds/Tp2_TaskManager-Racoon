@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TaskManagerTest {
@@ -44,5 +46,20 @@ public class TaskManagerTest {
 
         //Verification
         assertEquals(tasksLength - 1 ,taskManager.getTasks().size(),"The task is not added to the list of tasks");
+    }
+    @Test
+    public void when_set_status_done_task_set_done(){
+
+        //Initialization
+        String description = "description";
+        Task task = new Task(description);
+        taskManager.addTask(task);
+
+        //Treatment
+        taskManager.setDone(task.getId());
+
+        //Verification
+        assertEquals("done",task.getStatus());
+
     }
 }
