@@ -14,7 +14,7 @@ public class TaskManager {
 
     public static void main(String[] args)
     {
-        System.out.println("Tasks Manager");
+        System.out.println("--------Tasks Manager-------");
 
         TaskManager taskManager = new TaskManager();
 
@@ -24,6 +24,7 @@ public class TaskManager {
             if (input.charAt(0) == 'q')
                 return;
             taskManager.process(input.charAt(0),input.substring(2));
+            taskManager.tasks.forEach(e-> System.out.println(e.toString()));
         }
     }
 
