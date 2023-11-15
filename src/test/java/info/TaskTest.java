@@ -8,26 +8,26 @@ public class TaskTest {
 
     @Test
     public void when_creating_task_should_have_todo_status(){
-        //init - param
+        //Initialization
         String description = "description";
 
-        //treatment - create object task
+        //Treatment
         Task task = new Task(description);
 
-        //verify
+        //Verification
         assertEquals("to do", task.getStatus());
     }
 
     @Test
     public void task_id_should_be_unique(){
-        //init - param
+        //Initialization
         String description = "description";
 
-        //treatment - create object task
+        //Treatment
         Task task1 = new Task(description);
         Task task2 = new Task(description);
 
-        //verify
+        //Verification
         assertNotEquals(task1.getId(),task2.getId());
     }
 

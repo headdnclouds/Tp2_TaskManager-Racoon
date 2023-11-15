@@ -1,12 +1,9 @@
 package info;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TaskManagerTest {
 
@@ -76,6 +73,69 @@ public class TaskManagerTest {
 
         //Verification
         assertEquals("to do",task.getStatus());
+    }
+
+    @Test
+    public void when_user_add_task_should_add_task(){
+
+        //Initialization
+        String description = "description";
+        char command = '+';
+
+        //Treatment
+        taskManager.process(command,description);
+
+        //Verification
+        assertEquals(1,taskManager.tasks.size(), "The task is not added.");
+    }
+
+    @Test
+    public void when_user_remove_task_should_remove_task(){
+
+        //Initialization
+        Task task = new Task("description");
+        taskManager.addTask(task);
+        String data = String.valueOf(task.getId());
+        char command = '-';
+
+        //Treatment
+        taskManager.process(command,data);
+
+        //Verification
+        assertEquals(0,taskManager.tasks.size(), "The task is not removed.");
+    }
+
+    @Test
+    public void when_user_set_done_task_should_switch_to_done(){
+
+        //Initialization
+        Task task = new Task("description");
+        taskManager.addTask(task);
+        String data = String.valueOf(task.getId());
+        char command = 'x';
+
+        //Treatment
+        taskManager.process(command,data);
+
+        //Verification
+        assertEquals("done",task.getStatus(), "The task status is not updated to done.");
+    }
+
+    @Test
+    public void when_user_set_todo_task_should_switch_to_todo(){
+
+        //Initialization
+        Task task = new Task("description");
+        task.done();
+        taskManager.addTask(task);
+        String data = String.valueOf(task.getId());
+        char command = 'o';
+
+        //Treatment
+        taskManager.process(command,data);
+
+        //Verification
+        assertEquals("to do",task.getStatus(), "The task status is not updated to todo.");
     }
 
 }

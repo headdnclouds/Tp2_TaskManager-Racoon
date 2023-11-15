@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 
@@ -13,7 +14,34 @@ public class TaskManager {
 
     public static void main(String[] args)
     {
-        System.out.println("Hello world");
+        System.out.println("Tasks Manager");
+
+        TaskManager taskManager = new TaskManager();
+
+        Scanner sc = new Scanner(System.in);
+        while (true){
+            String input = sc.nextLine();
+            if (input.charAt(0) == 'q')
+                return;
+            taskManager.process(input.charAt(0),input.substring(2));
+        }
+    }
+
+    public void process(char command, String data){
+        switch (command){
+            case '+':
+                addTask(new Task(data));
+                break;
+            case '-':
+                removeTask(Integer.parseInt(data));
+                break;
+            case 'x':
+                setDone(Integer.parseInt(data));
+                break;
+            case 'o':
+                setTodo(Integer.parseInt(data));
+                break;
+        }
     }
 
     // Add a task
