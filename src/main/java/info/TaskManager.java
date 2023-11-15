@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class TaskManager {
@@ -20,4 +21,8 @@ public class TaskManager {
         tasks.add(task);
     }
 
+    // - <id> Remove the task matching the given id
+    public void removeTask(int id){
+         tasks = tasks.stream().filter(e-> e.getId()!=id).collect(Collectors.toList());
+    }
 }
