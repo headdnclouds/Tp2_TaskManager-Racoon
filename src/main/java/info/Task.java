@@ -1,6 +1,7 @@
 package info;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public class Task {
     @Getter
@@ -10,9 +11,9 @@ public class Task {
     @Getter
     private String status;
 
-    public Task(String description, int id, String status) {
+    public Task(String description, int id) {
         this.description = description;
         this.id = id;
-        this.status = status;
+        this.status = "to do";
     }
 }
